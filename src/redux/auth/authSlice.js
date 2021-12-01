@@ -14,31 +14,30 @@ const authSlice = createSlice({
     error: 'null',
     isLoading: false,
     isAuth: false,
-    myProp: 'Hello',
   },
-  reducers: {
-    renameProp: (state, action) => {
-      return { ...state, myProp: action.payload };
-    },
-  },
+  // reducers: {
+  // },
   extraReducers: {
     [signupThunk.pending](state, action) {
       return {
         ...state,
         isLoading: true,
         error: null,
-        // !!!!!!!!!!!!!!!!!!!!!!!!!// isAuth: false,
       };
     },
     [signupThunk.fulfilled](state, action) {
-      // if (action.payload.name)
-      return {
-        ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-        isLoading: false,
-        isAuth: true,
-      };
+      state.auth.user = action.payload.user;
+      state.auth.token = action.payload.token;
+      state.auth.isLoading = false;
+      state.auth.isAuth = true;
+
+      // return {
+      //   ...state,
+      //   user: action.payload.user,
+      //   token: action.payload.token,
+      //   isLoading: false,
+      //   isAuth: true,
+      // };
     },
     [signupThunk.rejected](state, action) {
       //   console.log(action);
