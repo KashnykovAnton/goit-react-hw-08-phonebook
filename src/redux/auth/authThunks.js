@@ -6,17 +6,6 @@ const userLogin = 'users/login';
 const userLogout = 'users/logout';
 const userCurrent = 'users/current';
 
-// async function FetchWithErrorHandling(url = '') {
-//   const response = await fetch(url);
-//   return response.ok
-//     ? await response.json()
-//     : Promise.reject(new Error('Not found'));
-// }
-
-// export function fetchTrendMovies() {
-//   return FetchWithErrorHandling(`${BASE_URL}trending/movie/day?${API_KEY}`);
-// }
-
 export const signupThunk = createAsyncThunk(
   'users/signup',
   async (user, { rejectWithValue }) => {

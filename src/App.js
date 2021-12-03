@@ -19,7 +19,6 @@ const isAuth = false;
 
 export default function App() {
   const auth = useSelector(contactsSelectors.getAuth);
-  const user = useSelector(contactsSelectors.getUser);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,14 +43,11 @@ export default function App() {
             <li>
               <Link to="/register">Register</Link>
             </li>
-            {auth && (
-              <li>
-                <h2>Welcome {user}</h2>
-                <button type="button" onClick={handleLogout}>
-                  Log out
-                </button>
-              </li>
-            )}
+            <li>
+              <button type="button" onClick={handleLogout}>
+                Log out
+              </button>
+            </li>
           </ul>
         </nav>
       </header>
@@ -73,6 +69,8 @@ export default function App() {
             {/* <Route element={<NotFoundView />} /> */}
           </Routes>
         )}
+
+        {/* {auth && <h1>Render!</h1>} */}
         {auth && (
           <>
             <ContactsSection title="Phonebook">
